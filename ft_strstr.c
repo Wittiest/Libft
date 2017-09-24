@@ -29,7 +29,7 @@ char	*ft_strstr(const char *big, const char *little)
 		hold = i;
 		while (haystack[hold++] == needle[j++])
 			if (!*(needle + j))
-				return (&haystack[i]);
+				return (haystack + i);
 		i++;
 	}
 	return (NULL);
