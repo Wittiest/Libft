@@ -10,26 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	First we check if little has anything in it's first spot. If it doesn't,
+**	we just return big, because the "first occurence" is the first spot in big.
+**
+**	We iterate through big, if we find a spot where they match, we begin to
+**	iterate along big and little. If little hits its null byte, we know we found
+**	it at big + i;
+*/
+
 char	*ft_strstr(const char *big, const char *little)
 {
 	size_t	i;
 	size_t	j;
 	size_t	hold;
-	char	*haystack;
-	char	*needle;
+	char	*bigclone;
+	char	*littleclone;
 
 	i = 0;
-	haystack = (char *)big;
-	needle = (char *)little;
-	if (!*needle)
-		return (haystack);
-	while (*(haystack + i))
+	bigclone = (char *)big;
+	littleclone = (char *)little;
+	if (!*littleclone)
+		return (bigclone);
+	while (*(bigclone + i))
 	{
 		j = 0;
 		hold = i;
-		while (haystack[hold++] == needle[j++])
-			if (!*(needle + j))
-				return (haystack + i);
+		while (bigclone[hold++] == littleclone[j++])
+			if (!*(littleclone + j))
+				return (bigclone + i);
 		i++;
 	}
 	return (NULL);
