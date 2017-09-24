@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	size_t	hold;
+	size_t	save;
 	char	*bigclone;
 	char	*littleclone;
 
@@ -37,8 +37,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	while (i < len && *(bigclone + i))
 	{
 		j = 0;
-		hold = i;
-		while (bigclone[hold++] == littleclone[j++])
+		save = i;
+		while ((save < len) && bigclone[save++] == littleclone[j++])
 			if (!*(littleclone + j))
 				return (bigclone + i);
 		i++;

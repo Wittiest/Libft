@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 /*
 **	First we check if little has anything in it's first spot. If it doesn't,
 **	we just return big, because the "first occurence" is the first spot in big.
@@ -23,7 +25,7 @@ char	*ft_strstr(const char *big, const char *little)
 {
 	size_t	i;
 	size_t	j;
-	size_t	hold;
+	size_t	save;
 	char	*bigclone;
 	char	*littleclone;
 
@@ -35,8 +37,8 @@ char	*ft_strstr(const char *big, const char *little)
 	while (*(bigclone + i))
 	{
 		j = 0;
-		hold = i;
-		while (bigclone[hold++] == littleclone[j++])
+		save = i;
+		while (bigclone[save++] == littleclone[j++])
 			if (!*(littleclone + j))
 				return (bigclone + i);
 		i++;
