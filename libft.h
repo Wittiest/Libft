@@ -70,6 +70,11 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 int					ft_nbr_len(int n);
+int					ft_isodd(int nbr);
+int					ft_iseven(int nbr);
+int					ft_average(int nbr1, int nbr2);
+int					ft_islower(int c);
+int					ft_isupper(int c);
 
 typedef struct		s_list
 {
