@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpearson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/23 15:31:02 by dpearson          #+#    #+#             */
-/*   Updated: 2017/09/23 15:31:03 by dpearson         ###   ########.fr       */
+/*   Created: 2017/09/20 02:44:01 by dpearson          #+#    #+#             */
+/*   Updated: 2017/09/20 02:44:02 by dpearson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_nbr_len(int n)
+#include <stdlib.h>
+#include "libft.h"
+
+char		*ft_itoa(int n)
 {
 	int		len;
-	long	n_cpy;
+	char	*str;
 
-	len = 0;
-	n_cpy = (long)n;
-	if (n_cpy <= 0)
+	len = ft_nbr_len(n);
+	str = ft_strnew(len);
+	if (str == NULL)
+		return (NULL);
+	str[len--] = '\0';
+	if (n < 0)
 	{
-		len++;
-		n_cpy = -n_cpy;
+		str[0] = '-';
+		n = -n;
 	}
-	while (n_cpy)
+	str[len--] = (n % 10) + '0';
+	while (n >= 10)
 	{
-		len++;
-		n_cpy /= 10;
+		n /= 10;
+		str[len--] = (n % 10) + '0';
 	}
-	return (len);
+	return (str);
 }

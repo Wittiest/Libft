@@ -12,6 +12,8 @@
 
 NAME		=	libft.a
 
+INCLUDES	= ./includes
+
 FILENAMES	=	ft_memset.c ft_memcpy.c ft_memalloc.c ft_bzero.c ft_memccpy.c  \
 				ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c   \
 				ft_striteri.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strequ.c \
@@ -27,15 +29,16 @@ FILENAMES	=	ft_memset.c ft_memcpy.c ft_memalloc.c ft_bzero.c ft_memccpy.c  \
 				ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_nbr_len.c ft_iseven.c  \
 				ft_isodd.c ft_isupper.c ft_islower.c
 
+SRC = $(addprefix srcs/, $(FILENAMES))
 
 OBJECTS		= ${FILENAMES:c=o}
 
-OPTION		=	-c -I ./
+OPTION		=	-c -I
 
 all : $(NAME)
 
 $(NAME):
-	@ gcc -Wall -Wextra -Werror $(OPTION) $(FILENAMES)
+	@ gcc -Wall -Wextra -Werror $(OPTION) $(INCLUDES) $(SRC)
 	@ ar rcs $(NAME) $(OBJECTS)
 	@ ranlib $(NAME)
 
