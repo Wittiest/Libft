@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpearson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/18 12:26:21 by dpearson          #+#    #+#             */
-/*   Updated: 2017/09/18 12:26:22 by dpearson         ###   ########.fr       */
+/*   Created: 2017/09/30 17:20:41 by dpearson          #+#    #+#             */
+/*   Updated: 2017/09/30 17:20:42 by dpearson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
 
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 5
+# define READ(R, B, S, F) if ((R = read(F, B, S)) == -1){free(B); return (-1);}
+# define SAFEMALLOC(X) if (!X) {return (-1);}
+# define SAFE_FREE_MALLOC(X, B) if (!X) {free(B); return (-1);}
+
+void				*ft_realloc(void *src, size_t new_size);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memalloc(size_t size);
@@ -75,6 +86,8 @@ int					ft_iseven(int nbr);
 int					ft_average(int nbr1, int nbr2);
 int					ft_islower(int c);
 int					ft_isupper(int c);
+char				*ft_strcdup(const char *s1, int c);
+char				*ft_strndup(const char *s1, size_t n);
 
 typedef struct		s_list
 {
@@ -90,4 +103,6 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t n));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+int					get_next_line(const int fd, char **line);
 #endif

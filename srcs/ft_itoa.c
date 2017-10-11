@@ -16,23 +16,25 @@
 char		*ft_itoa(int n)
 {
 	int		len;
+	long	n_cpy;
 	char	*str;
 
 	len = ft_nbr_len(n);
+	n_cpy = (long)n;
 	str = ft_strnew(len);
 	if (str == NULL)
 		return (NULL);
 	str[len--] = '\0';
-	if (n < 0)
+	if (n_cpy < 0)
 	{
 		str[0] = '-';
-		n = -n;
+		n_cpy = -n_cpy;
 	}
-	str[len--] = (n % 10) + '0';
-	while (n >= 10)
+	str[len--] = (n_cpy % 10) + '0';
+	while (n_cpy >= 10)
 	{
-		n /= 10;
-		str[len--] = (n % 10) + '0';
+		n_cpy /= 10;
+		str[len--] = (n_cpy % 10) + '0';
 	}
 	return (str);
 }

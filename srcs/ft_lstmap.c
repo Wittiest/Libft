@@ -14,10 +14,6 @@
 #include <stdlib.h>
 
 /*
-**	I reached the assumption that the function pointer mallocs for me.
-*/
-
-/*
 **	We check if the given list exists, if not we return null. We will use the
 **	variable head to store the beginning of our fresh list that has been
 **	modified by the function

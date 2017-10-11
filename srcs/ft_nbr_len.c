@@ -13,17 +13,19 @@
 int		ft_nbr_len(int n)
 {
 	int		len;
+	long	n_cpy;
 
 	len = 0;
-	if (n <= 0)
+	n_cpy = (long)n;
+	if (n_cpy <= 0)
 	{
 		len++;
-		n = -n;
+		n_cpy = -n_cpy;
 	}
 	while (n_cpy)
 	{
 		len++;
-		n /= 10;
+		n_cpy /= 10;
 	}
 	return (len);
 }

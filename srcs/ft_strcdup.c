@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpearson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 03:17:10 by dpearson          #+#    #+#             */
-/*   Updated: 2017/09/20 03:17:10 by dpearson         ###   ########.fr       */
+/*   Created: 2017/10/07 23:03:57 by dpearson          #+#    #+#             */
+/*   Updated: 2017/10/07 23:05:42 by dpearson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strcdup(const char *s1, int c)
 {
-	return (ft_strndup(s1, ft_strlen(s1)));
+	return (ft_strdup(ft_strchr(s1, c)));
 }
